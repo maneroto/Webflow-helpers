@@ -4,12 +4,11 @@ Element.prototype.w_slider = function ({
     has_controls = false,
     controls_container = '.controls',
     controls = '.dot',
-    debug = false,
 } = {}) {
     const w_buttons = {
         left: this.querySelector('.w-slider-arrow-left'),
         right: this.querySelector('.w-slider-arrow-right'),
-        controls: this.querySelectorAll('w-slider-nav .w-slider-dot'),
+        controls: this.querySelectorAll('.w-slider-nav .w-slider-dot'),
     };
     const buttons = {
         left: this.querySelectorAll(left),
@@ -47,16 +46,6 @@ Element.prototype.w_slider = function ({
                     );
                 }
         );
-    }
-    if (debug) {
-        console.log('Webflow helpers slider status');
-        console.log(`
-            Left button: ${left}\n
-            Right button: ${left}\n
-            Has controls: ${has_controls}\n
-            Controls container: ${controls_container}\n
-            Controls: ${controls}
-        `);
     }
 };
 

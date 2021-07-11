@@ -4,6 +4,7 @@ Element.prototype.w_slider = function ({
     has_controls = false,
     controls_container = '.controls',
     controls = '.dot',
+    debug = false,
 } = {}) {
     const w_buttons = {
         left: this.querySelector('.w-slider-arrow-left'),
@@ -46,6 +47,17 @@ Element.prototype.w_slider = function ({
                     );
                 }
         );
+    }
+    if (debug) {
+        console.log(`
+            Webflow helpers: slider \n
+            Item: ${this} \n
+            Left button: ${left} \t ${buttons.left} \n
+            Right button: ${right} \t ${buttons.right} \n
+            Has controls: ${has_controls}\n
+            Controls container: ${controls_container} \t ${buttons.controls} \n
+            Controls: ${controls}
+        `);
     }
 };
 

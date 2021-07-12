@@ -11,6 +11,7 @@ Element.prototype.w_slider = function ({
         right: this.querySelector('.w-slider-arrow-right'),
         controls: this.querySelectorAll('.w-slider-nav .w-slider-dot'),
     };
+
     const buttons = {
         left: this.querySelectorAll(left),
         right: this.querySelectorAll(right),
@@ -30,34 +31,27 @@ Element.prototype.w_slider = function ({
             })
     );
     if (has_controls) {
-        buttons.controls.forEach(
-            (container) =>
-                function () {
-                    const current_controls =
-                        container.querySelectorAll(controls);
-                    current_controls.forEach(
-                        (button, index) =>
-                            (button.onclick = function () {
-                                if (index >= w_buttons.controls.length)
-                                    w_buttons.controls[
-                                        w_buttons.controls.length - 1
-                                    ].click();
-                                else w_buttons.controls[index].click();
-                            })
-                    );
-                }
+        buttons.controls.forEach((container) =>
+            (function () {
+                const current_controls = container.querySelectorAll(controls);
+                current_controls.forEach(
+                    (button, index) =>
+                        (button.onclick = function () {
+                            if (index >= w_buttons.controls.length)
+                                w_buttons.controls[
+                                    w_buttons.controls.length - 1
+                                ].click();
+                            else w_buttons.controls[index].click();
+                        })
+                );
+            })()
         );
     }
     if (debug) {
-        console.log(`
-            Webflow helpers: slider \n
-            Item: ${this} \n
-            Left button: ${left} \t ${buttons.left} \n
-            Right button: ${right} \t ${buttons.right} \n
-            Has controls: ${has_controls}\n
-            Controls container: ${controls_container} \t ${buttons.controls} \n
-            Controls: ${controls}
-        `);
+        console.log(
+            `Webflow helpers: \nSlider classes \nLeft button: ${left}\nRight button: ${right}\nControls container: ${controls_container}\nControls: ${controls}\n\nSlider components \n`
+        );
+        console.log(buttons);
     }
 };
 
